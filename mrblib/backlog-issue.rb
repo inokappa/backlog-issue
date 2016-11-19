@@ -24,7 +24,6 @@ def __main__(argv)
   elsif ENV['BACKLOG_API_KEY'] == ''
     puts 'Please set Backlog API Key.'
   elsif opts['h'] || opts['help']
-    puts 'xxxxx'
     issue = BacklogIssue::BacklogIssue.new(opts)
     issue._help
   elsif opts['title'] != '' && opts['type'] != '' && opts['priority'] != ''
