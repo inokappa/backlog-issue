@@ -9,6 +9,8 @@ def __main__(argv)
     'title:',
     'type:',
     'status:',
+    'start:',
+    'due:',
     'priority:',
     'desc:',
     'key:',
@@ -20,7 +22,7 @@ def __main__(argv)
   if opts['v'] || opts['version']
     puts "v#{BacklogIssue::VERSION}"
   elsif opts['space'] == ''
-    puts 'Please set Backlog Space Name.'
+    puts 'Please set Backlog Space Name.(Please use --space option.)'
   elsif ENV['BACKLOG_API_KEY'] == ''
     puts 'Please set Backlog API Key.'
   elsif opts['h'] || opts['help']
@@ -33,6 +35,9 @@ def __main__(argv)
     issue = BacklogIssue::BacklogIssue.new(opts)
     issue._status
   elsif opts['key'] != '' && opts['status'] != ''
+    issue = BacklogIssue::BacklogIssue.new(opts)
+    issue._status
+  elsif opts['key'] != '' && opts['due'] != ''
     issue = BacklogIssue::BacklogIssue.new(opts)
     issue._status
   elsif opts['key'] != '' && opts['comment'] != ''
